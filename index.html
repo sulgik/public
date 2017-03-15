@@ -1,0 +1,225 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>reveal.js</title>
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/white.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+<style>
+img.two {
+    height: 50%;
+    width: 50%;
+}
+</style>
+
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section>
+					<h2>Power Disaggregation</h2>
+					<h4>전력분리기술</h4><br><br>
+					Intelligence 세미나<br>김설기
+				</section>
+
+                <section data-background="nilm/enertalk.png">
+                </section>
+				<section>
+					<section> 
+						<h2>Power Disaggregation</h2>
+						<p class="fragment">&rdquo;집안으로 들어가는 전압과 전류의 변화를 분석하여,</p>
+						<p class="fragment">가전의 사용여부 및 개별 전기소비량을 추론하는 프로세스&rdquo;</p>
+						<p class="fragment">영문 Wikipedia 번역</p>
+						<br>
+						<p class="fragment">다른 이름 : NonIntrusive Load Montioring, NILM</p>
+					</section>
+					<section><img src="nilm/disaggregation-1.png"></section>
+					<section>
+						<h3>활용 예시</h3>
+						<a href="https://sense.com/product.html">Sense</a>
+					</section>
+					<section>	
+						<h3>활용 예시</h3>
+						<iframe width="560" height="315" src="https://www.youtube.com/embed/4973lylTEDc" frameborder="0" allowfullscreen></iframe>
+					</section>
+					<section>
+						<h3>Smart Meter</h3>
+						<img src="nilm/install2.png">
+					</section>
+ 				</section>
+
+ 				<section> 
+	 				<section>
+	 					<h3>common questions</h3>
+	 					
+	 					<p class="fragment">Q. 개별가전에 센서나 플러그를 달면 되는 것 아닌가?</p>
+	 					<p class="fragment">실제로 에너지 절약 등의 목적으로 센서가 들어가고 있음 (Smart Energy Profile 등)</p>
+	 					<p class="fragment">A. Yes, 그러나 당장은 어려움.</p>
+	 				</section>
+
+	 				<section>
+	 					<h3>common questions</h3>
+		 					<p class="fragment">Q. 가전분리해서 뭐할래?</p>
+	 						<p class="fragment">A1. 에너지 절약/효율화, 수요피크 관리</p>
+	 						<p class="fragment"><img src="nilm/peak.gif"></p>		
+ 					</section>
+ 					<section>
+	 					<p >Q. 가전분리해서 뭐할래?</p>
+	 					<p>A2. 기기 이상감지,</p>
+	 					<p class="fragment">안전 등</p>
+	 					<img class="fragment" src="nilm/grandma.jpg">
+	 				</section>					
+
+					<section>
+	 					<p>A3. offline user behavior</p>
+	 					<ul>
+		 					<li>광고와 연계</li>
+		 					<li class="fragment">재실/수면 탐지</li>
+		 					<li class="fragment">"몇일 연속으로 집에서 조리하여 식사를 하셨네요. 오늘 저녁 외식 어떠세요?"</li>
+		 					<li class="fragment"> TV 시청패턴 <span class="fragment"><small>(이 경우는 IPTV가 더..)</small></span></li>
+		 				</ul>
+ 					</section>	
+					<section>
+	 					<h3>A3. offline user behavior</h3>
+	 					<p>Google 의 Nest 인수</p>
+	 					<img class="stretch" src="nilm/nest.png"> 					
+ 					</section>	
+ 				</section>
+
+				<section>
+					<section>
+						<h3>알고리즘</h3>
+						<p>To-Be 결과물</p>
+						<img src="nilm/perfact.png">
+					</section>
+					<section>
+						<h3>Data for Supervised Learning</h3>
+						<p>"일부 가정"에서 스마트플러그를 이용하여 정답셋 수집</p>
+						<figure><img src="nilm/plug.gif"><figcaption><small>스마트 플러그 예 : LG 유플러스 IoT 플러그</small></figcaption></figure>
+					</section>
+					<section>
+						<h3>데이터셋</h3>
+						<img src="nilm/super.png"></p>
+						<p>각 가전의 signature 를 이용하여 학습</p>
+					</section>
+					<section>
+						<h3>알고리즘적 특징</h3>
+						<ul>
+							<li>기본적으로 Classification in Time Series Data</li>
+							<ul>
+								<li class="fragment">Speech Recognition 과 대략 연관</li>
+								<li class="fragment">HMM, RNN, LSTM</li>
+							</ul>
+							<li class="fragment">여러대의 가전이 동시에 작동하는 것이 일반적</li>
+							<li class="fragment">More close to Multi-speaker Identification</li>
+							<li class="fragment">Quick approach : 각 가전별 detector</li>
+						</ul>
+					</section>
+					<section>
+						<h3>Supervised Learning for NILM </h3>
+							<ul>
+								<li class="fragment">HMM</li>
+								<li class="fragment">GBDT (XGBoost)</li>
+								<li class="fragment">Deep Learning</li>
+							</ul>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h3>Deep Learning for NILM</h3>
+						<a href="http://jackkelly.github.io/BuildSys_2015_NeuralNILM/#/dnn-architectures-for-nilm">Jack Kelly's Neural NILM</a>
+					</section>
+					<section>
+						<h3>Example Output</h3>
+						<img class= "stretch" src="nilm/output.png">
+					</section>
+					<section>
+						<h3>아직 만족스럽지 못한 결과</h3>
+						<img class="stretch" src="nilm/metric.png">
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h3>Framework</h3>
+						<p>NILM with Lower Frequency Data in Cloud Server (~100 Hz) - Most Services</p>
+						<p> VS </p>
+						<p class="fragment">On-Device NILM with Higher Frequency Data (KHz/MHz) - Sense</p>
+					</section>							
+					<section>
+						<img class="stretch" src="nilm/sense2.png">
+					</section>
+				</section>
+
+				<section>
+					<h3> Challenges</h3>
+					<ul>
+						<li class="fragment">미지의 가전</li>
+						<li class="fragment">미지의 가전구성</li>
+			 			<li class="fragment">태양광 등 발전시설</li>
+						<li class="fragment">실시간 서비스</li>
+					</ul>
+				</section>
+				<section>
+					<h3> Challenges as Service</h3>
+					<ul>
+						<li>사용 시나리오 개발</li>
+						<li>Privacy Issue</li>
+					</ul>
+				</section>
+
+				<section>
+						<h3>LABS &amp; Power Disaggregation?</h3>
+						<ul>
+							<li class="fragment">Ambient Intelligence</li>
+							<li class="fragment">Use of smartphone's magnetic sensor</li>
+							<p class="fragment"><img class="stretch" src="nilm/phonemag.png"></p>
+						</ul>
+				</section>
+
+				<section>
+					<h3>Q &amp; A</h3>
+				</section>
+			</div>
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+			// More info https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				history: true,
+
+				// More info https://github.com/hakimel/reveal.js#dependencies
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+				],
+				pdfMaxPagesPerSlide: 1,
+				transition : 'none',
+				slideNumber : true
+			});
+		</script>
+	</body>
+</html>
+
+
