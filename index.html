@@ -36,71 +36,28 @@ img.two {
 					<h4>전력분리기술</h4><br><br>
 					<br>김설기
 				</section>
-
-                <section data-background="nilm/enertalk.png">
-                </section>
 				<section>
-					<section> 
-						<h2>Power Disaggregation</h2>
-						<p class="fragment">&rdquo;집안으로 들어가는 전압과 전류의 변화를 분석하여,</p>
-						<p class="fragment">가전의 사용여부 및 개별 전기소비량을 추론하는 프로세스&rdquo;</p>
-						<p class="fragment">영문 Wikipedia 번역</p>
-						<br>
-						<p class="fragment">다른 이름 : NonIntrusive Load Montioring, NILM</p>
-					</section>
-					<section><img src="nilm/disaggregation-1.png"></section>
 					<section>
-						<h3>활용 예시</h3>
-						<a href="https://sense.com/product.html">Sense</a>
+      					<p>전력분리?</p>
+						<img src="nilm/disaggregation-1.png">
 					</section>
-					<section>	
-						<h3>활용 예시</h3>
-						<iframe width="560" height="315" src="https://www.youtube.com/embed/4973lylTEDc" frameborder="0" allowfullscreen></iframe>
+                	<section>
+                		<img src="nilm/sense_.png">
+      					<p>다른 이름: NonIntrusive Load Montioring, NILM</p>
+                	</section>             
+					<section>
+						<h3>IOT 와 전력분리</h3>
+                		<img src="nilm/iot.jpeg">
 					</section>
 					<section>
-						<h3>Smart Meter</h3>
-						<img src="nilm/install2.png">
-					</section>
- 				</section>
-
- 				<section> 
-	 				<section>
-	 					<h3>common questions</h3>
-	 					
-	 					<p class="fragment">Q. 개별가전에 센서나 플러그를 달면 되는 것 아닌가?</p>
-	 					<p class="fragment">실제로 에너지 절약 등의 목적으로 센서가 들어가고 있음 (Smart Energy Profile 등)</p>
-	 					<p class="fragment">A. Yes, 그러나 당장은 어려움.</p>
+	 					<p>Q. 전력분리해서 뭐할까?</p>
+	 					<p>
+	 						<img src="nilm/peak.gif">
+	 						<img class="fragment" src="nilm/grandma.jpg">
+	 					</p>
+	 					<p class="fragment">offline user behavior</p>
 	 				</section>
-
-	 				<section>
-	 					<h3>common questions</h3>
-		 					<p class="fragment">Q. 가전분리해서 뭐할래?</p>
-	 						<p class="fragment">A1. 에너지 절약/효율화, 수요피크 관리</p>
-	 						<p class="fragment"><img src="nilm/peak.gif"></p>		
- 					</section>
- 					<section>
-	 					<p >Q. 가전분리해서 뭐할래?</p>
-	 					<p>A2. 기기 이상감지,</p>
-	 					<p class="fragment">안전 등</p>
-	 					<img class="fragment" src="nilm/grandma.jpg">
-	 				</section>					
-
-					<section>
-	 					<p>A3. offline user behavior</p>
-	 					<ul>
-		 					<li>광고와 연계</li>
-		 					<li class="fragment">재실/수면 탐지</li>
-		 					<li class="fragment">"몇일 연속으로 집에서 조리하여 식사를 하셨네요. 오늘 저녁 외식 어떠세요?"</li>
-		 					<li class="fragment"> TV 시청패턴 <span class="fragment"><small>(이 경우는 IPTV가 더..)</small></span></li>
-		 				</ul>
- 					</section>	
-					<section>
-	 					<h3>A3. offline user behavior</h3>
-	 					<p>Google 의 Nest 인수</p>
-	 					<img class="stretch" src="nilm/nest.png"> 					
- 					</section>	
- 				</section>
-
+	 			</section>
 				<section>
 					<section>
 						<h3>알고리즘</h3>
@@ -120,78 +77,20 @@ img.two {
 					<section>
 						<h3>알고리즘적 특징</h3>
 						<ul>
-							<li>기본적으로 Classification in Time Series Data</li>
-							<ul>
-								<li class="fragment">Speech Recognition 과 대략 연관</li>
-								<li class="fragment">HMM, RNN, LSTM</li>
-							</ul>
-							<li class="fragment">여러대의 가전이 동시에 작동하는 것이 일반적</li>
-							<li class="fragment">More close to Multi-speaker Identification</li>
-							<li class="fragment">Quick approach : 각 가전별 detector</li>
+							<li>여러대의 가전이 동시에 작동하는 것이 일반적</li>
+							<li class="fragment">음성인식에서 Multi-speaker Identification</li>
+  							<li class="fragment">관련알고리즘: HMM(R depmixS4), RNN, LSTM</li>
 						</ul>
 					</section>
 					<section>
-						<h3>Supervised Learning for NILM </h3>
-							<ul>
-								<li class="fragment">HMM</li>
-								<li class="fragment">GBDT (XGBoost)</li>
-								<li class="fragment">Deep Learning</li>
-							</ul>
-					</section>
-				</section>
-
-				<section>
-					<section>
-						<h3>Deep Learning for NILM</h3>
-						<a href="http://jackkelly.github.io/BuildSys_2015_NeuralNILM/#/dnn-architectures-for-nilm">Jack Kelly's Neural NILM</a>
-					</section>
-					<section>
-						<h3>Example Output</h3>
-						<img class= "stretch" src="nilm/output.png">
-					</section>
-					<section>
-						<h3>아직 만족스럽지 못한 결과</h3>
-						<img class="stretch" src="nilm/metric.png">
-					</section>
-				</section>
-
-				<section>
-					<section>
-						<h3>Framework</h3>
-						<p>NILM with Lower Frequency Data in Cloud Server (~100 Hz) - Most Services</p>
-						<p> VS </p>
-						<p class="fragment">On-Device NILM with Higher Frequency Data (KHz/MHz) - Sense</p>
-					</section>							
-					<section>
-						<img class="stretch" src="nilm/sense2.png">
-					</section>
-				</section>
-
-				<section>
-						<h3>Other Possibiility of Power Disaggregation?</h3>
+						<h3>상업화 어려움</h3>
 						<ul>
-							<li class="fragment">Use of smartphone's magnetic sensor</li>
-							<p class="fragment"><img class="stretch" src="nilm/phonemag.png"></p>
+							<li>미지의 가전</li>
+						    <li class="fragment">미지의 가전구성</li>
+			 			    <li class="fragment">태양광 등 발전시설</li>
+						    <li class="fragment">실시간 서비스</li>
 						</ul>
 				</section>
-
-				<section>
-					<h3> Challenges</h3>
-					<ul>
-						<li class="fragment">미지의 가전</li>
-						<li class="fragment">미지의 가전구성</li>
-			 			<li class="fragment">태양광 등 발전시설</li>
-						<li class="fragment">실시간 서비스</li>
-					</ul>
-				</section>
-				<section>
-					<h3> Challenges as Service</h3>
-					<ul>
-						<li>사용 시나리오 개발</li>
-						<li>Privacy Issue</li>
-					</ul>
-				</section>
-
 
 				<section>
 					<h3>Q &amp; A</h3>
