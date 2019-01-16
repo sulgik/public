@@ -10,8 +10,8 @@
   * 
 
 ## Main idea of "R for Data Science"
-  * Big Data and R
-     1. "While the complete data might be big, often the data needed to answer a specific question is small."
+  * 빅데이터와 R
+     1. "전체 데이터는 클 수도 있지만, 특정 문제에 답을 얻는 데 필요한 데이터는 작은 경우가 많다."
      1. sparklyr and other tools
 
   * R Book
